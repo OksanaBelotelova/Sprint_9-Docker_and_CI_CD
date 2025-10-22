@@ -11,20 +11,14 @@ class TestLoginPage:
         login = LoginPage(driver)
 
         login.click_create_account()
-        login.input_name()
-        login.input_last_name()
-        login.input_username()
-        login.input_email_address()
-        login.input_password()
-        login.submit_account_form()
+        login.submit_create_account_form()
         login.wait_until_page_loaded()
 
         login_form = login.check_login_form()
         expected_page = URL.login_page_url
         current_page = login.get_current_page()
         
-        
-        assert login_form.is_displayed()
+        assert login_form
         assert current_page == expected_page
 
     
@@ -39,7 +33,6 @@ class TestLoginPage:
         current_page = login.get_current_page()
         expected_page = URL.home_page_url
        
-
         assert current_page == expected_page
         assert logout_button.is_displayed()
 

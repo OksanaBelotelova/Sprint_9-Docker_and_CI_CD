@@ -1,19 +1,15 @@
 from selenium.webdriver.common.by import By
 import allure
-import os
 from pages.base_page import BasePage
 from data import TestData
 from app_dir import APP_DIR
-from pathlib import Path
 
 
 class CreateRecipe(BasePage):
     PAGE_HEADER = [By. XPATH, './/h1[text()="Создание рецепта"]']
     RECIPE_NAME_INPUT = [By. XPATH, './/label[contains(@class, "styles_inputLabel")]/div[text() ="Название рецепта"]/following-sibling::input']
-    #BREAKFAST_CHECKBOX = [By. XPATH, './/div[@class = "styles_checkboxGroupItems__2W443 styles_checkboxGroupTags__fP_gP"/div[1]/button']
-    #LUNCH_CHECKBOX = [By. XPATH,'.//div[@class = "styles_checkboxGroupItems__2W443 styles_checkboxGroupTags__fP_gP"/div[2]/button']
-    DINNER_CHECKBOX = [By. XPATH, './/div[contains(@class, "styles_checkboxGroupItems")]/div[last()]/button']
     INGREDIENTS_FIELD = [By. XPATH, './/input[contains(@class, "styles_ingredientsInput")]']
+    INGREDIENTS_DROPDOWN= [By. XPATH, './/div[contains(@class,"styles_ingredientsInputs")]/div[contains(@class,"styles_container")]']
     ADD_INGREDIENT = [By. XPATH,'.//div[text()= "Добавить ингредиент"]']
     INGREDIENT = [By. XPATH,'.//div[contains(@class, "styles_ingredientsInputs")]/div[last()]/div[1]']
     WEIGHT_FIELD = [By. XPATH,'.//input[contains(@class,"styles_ingredientsAmountValue")]']
@@ -33,17 +29,12 @@ class CreateRecipe(BasePage):
         self.wait_until_visible(self.PAGE_HEADER)
         self.find_element(self.RECIPE_NAME_INPUT).send_keys(TestData.recipe_name)
 
-    @allure.step('Укажи прием пищи')
-    def select_checkbox_dinner(self):
-        self.find_element(self.DINNER_CHECKBOX).click()
-
     @allure.step('Добавь ингрeдиент')
     def add_ingredient(self):
         for key, value in TestData.ingredients.items():
             self.find_element(self.INGREDIENTS_FIELD).send_keys(key)
-            self.wait_until_visible(self.INGREDIENT)
+            self.wait_until_visible(self.INGREDIENTS_DROPDOWN)
             self.find_element(self.INGREDIENT).click()
-            self.wait_until_clickable(self.ADD_INGREDIENT, time=40)
             self.find_element(self.WEIGHT_FIELD).send_keys(value)
             self.find_element(self.ADD_INGREDIENT).click()
             

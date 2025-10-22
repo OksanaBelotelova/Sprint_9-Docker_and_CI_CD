@@ -15,7 +15,6 @@ class TestCreateRecipe:
         login.submit_login_form()
         recipe.click_create_recipe()
         recipe.input_recipe_name()
-        #recipe.select_checkbox_dinner()
         recipe.add_ingredient()
         recipe.add_time()
         recipe.add_recipe_description()
