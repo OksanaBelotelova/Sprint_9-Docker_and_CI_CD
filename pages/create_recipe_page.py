@@ -17,7 +17,7 @@ class CreateRecipe(BasePage):
     DESCRIPTION_FIELD = [By. XPATH, './/label[contains(@class,"styles_textareaLabel")]/textarea']
     SELECT_FILE = [By. XPATH, './/input[@type = "file"]']
     SUBMIT_RECIPE_BUTTON = [By. XPATH, './/button[text() = "Создать рецепт"]']
-    FILE_UPLOAD = str(APP_DIR / 'assets' / 'тост.jpeg')
+    FILE_UPLOAD = str(APP_DIR / 'assets' / 'toast.jpeg')
     
     
     def __init__(self, driver):
