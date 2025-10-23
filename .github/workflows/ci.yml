@@ -9,7 +9,9 @@ jobs:
     steps:
       - name: Check out repository code  
         uses: actions/checkout@v3 
+      - name: Create test image
+        run: docker build -t test .
       - name: Pull selenoid image
         run: docker pull selenoid/chrome:128.0
       - name: Run tests in docker
-        run: docker compose up --build --exit-code-from test_docker
+        run: docker compose up --build --exit-code-from test
