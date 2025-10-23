@@ -20,7 +20,6 @@ def get_chrome_options():
 def driver(request):
     url = URL().test_url
 
-    # TODO selenoid-uri
     selenoid_uri = request.config.getoption("--selenoid-uri")
     driver = webdriver.Remote(
         command_executor=f'{selenoid_uri}/wd/hub', options=get_chrome_options())
