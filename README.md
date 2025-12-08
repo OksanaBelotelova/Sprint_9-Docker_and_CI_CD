@@ -2,11 +2,11 @@
 
 
 ## В проекте реализованы:
-- паттерн Page Object Model
-- напписаны тесты на Selenium
+- паттерн Page Object Model,
+- написаны тесты на Selenium,
 - Dockerfile для сборки образа проекта с тестами,
 - docker-compose.yml для сборки проекта с селеноидом,
-- ci.yml для сборки проекта с CI/CD на базе GitHub Actions
+- ci.yml для сборки проекта с CI/CD на базе GitHub Actions,
 - подключен allure отчет
 
 ## Тестовые сценарии:
